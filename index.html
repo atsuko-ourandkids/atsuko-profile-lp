@@ -39,8 +39,6 @@
     overflow-x: hidden;
   }
 
-  img { max-width: 100%; display: block; }
-
   .wrap {
     width: 100%;
     max-width: 720px;
@@ -93,62 +91,12 @@
 
   .center { text-align: center; }
 
-  /* ---------- 写真 ---------- */
-  .photo {
-    position: relative;
-    overflow: hidden;
-    background: var(--mint-soft);
-  }
-
-  .photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  /* 写真がまだないときの仮表示 */
-  .photo .placeholder {
-    position: absolute;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: var(--mint-deep);
-    font-size: 13px;
-    line-height: 1.6;
-    text-align: center;
-    background:
-      radial-gradient(circle at 22% 24%, var(--white) 0 12%, transparent 12.5%),
-      radial-gradient(circle at 80% 78%, var(--lemon) 0 15%, transparent 15.5%),
-      var(--mint-soft);
-  }
-
-  .photo.is-missing img { display: none; }
-  .photo.is-missing .placeholder { display: flex; }
-
-  .photo.soft {
-    border-radius: 28px;
-    border: 8px solid var(--white);
-    box-shadow: var(--shadow);
-    aspect-ratio: 4 / 3;
-  }
-
   /* ---------- はじめまして ---------- */
   .hero {
     position: relative;
-    padding: 64px 0 56px;
+    padding: 120px 0 72px;
     text-align: center;
     overflow: hidden;
-  }
-
-  .hero .photo {
-    width: 220px;
-    height: 220px;
-    margin: 0 auto 28px;
-    border-radius: 50%;
-    border: 8px solid var(--white);
-    box-shadow: var(--shadow);
   }
 
   .hello {
@@ -182,16 +130,6 @@
     font-size: 14px;
     font-weight: 700;
     box-shadow: 0 4px 12px rgba(79, 165, 140, 0.1);
-  }
-
-  .catch {
-    display: inline-block;
-    font-size: 19px;
-    font-weight: 700;
-    line-height: 1.6;
-    background: var(--mint);
-    border-radius: 24px;
-    padding: 14px 22px;
   }
 
   .scroll-cue {
@@ -246,16 +184,6 @@
     color: var(--ink-soft);
   }
 
-  .profile .photo { margin-top: 28px; }
-
-  .callout {
-    margin-top: 28px;
-    text-align: center;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--mint-deep);
-  }
-
   /* ---------- すきなこと ---------- */
   .likes {
     display: grid;
@@ -293,138 +221,6 @@
     line-height: 1.5;
   }
 
-  /* ---------- わたしのストーリー ---------- */
-  .timeline {
-    list-style: none;
-    position: relative;
-    padding-left: 28px;
-  }
-
-  .timeline::before {
-    content: "";
-    position: absolute;
-    left: 8px;
-    top: 12px;
-    bottom: 12px;
-    width: 3px;
-    border-radius: 3px;
-    background: var(--mint);
-  }
-
-  .timeline > li {
-    position: relative;
-    margin-bottom: 20px;
-  }
-
-  .timeline > li:last-child { margin-bottom: 0; }
-
-  .timeline > li::before {
-    content: "";
-    position: absolute;
-    left: -27px;
-    top: 30px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--white);
-    border: 4px solid var(--mint-deep);
-  }
-
-  .step-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--mint-deep);
-    letter-spacing: 0.1em;
-    margin-bottom: 4px;
-  }
-
-  .step-head {
-    font-size: 19px;
-    font-weight: 700;
-    line-height: 1.6;
-    margin-bottom: 8px;
-  }
-
-  .year {
-    display: inline-block;
-    font-size: 14px;
-    color: var(--white);
-    background: var(--mint-deep);
-    border-radius: 999px;
-    padding: 0 12px;
-    margin-right: 6px;
-    vertical-align: 2px;
-  }
-
-  .timeline .photo { margin-top: 16px; }
-
-  /* ---------- 大切にしている問い ---------- */
-  .question-box {
-    background: var(--mint-soft);
-    border-radius: 36px;
-    padding: 40px 20px;
-    text-align: center;
-  }
-
-  .question {
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.6;
-    margin: 12px 0 16px;
-  }
-
-  .question .em {
-    background: linear-gradient(transparent 62%, var(--mint) 62%);
-  }
-
-  .question-box .note {
-    font-size: 15px;
-    color: var(--ink-soft);
-  }
-
-  /* ---------- つながりましょう ---------- */
-  .connect { text-align: center; }
-
-  .insta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--mint-deep);
-    color: var(--white);
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 700;
-    border-radius: 999px;
-    padding: 14px 32px;
-    box-shadow: 0 10px 24px rgba(79, 165, 140, 0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .insta-btn:hover,
-  .insta-btn:focus-visible {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 28px rgba(79, 165, 140, 0.36);
-  }
-
-  .insta-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-
-  .insta-btn svg { width: 22px; height: 22px; }
-
-  .qr {
-    width: 168px;
-    margin: 28px auto 0;
-    background: var(--white);
-    border-radius: 24px;
-    padding: 14px;
-    box-shadow: var(--shadow);
-  }
-
-  .qr-note {
-    margin-top: 10px;
-    font-size: 13px;
-    color: var(--ink-soft);
-  }
-
   footer {
     text-align: center;
     padding: 32px 0 40px;
@@ -448,21 +244,17 @@
   @media (min-width: 720px) {
     section { padding: 96px 0; }
     h2 { font-size: 32px; }
-    .hero { padding: 96px 0 72px; }
-    .hero .photo { width: 260px; height: 260px; }
+    .hero { padding: 160px 0 96px; }
     .hero h1 { font-size: 52px; }
-    .catch { font-size: 24px; padding: 16px 32px; }
     .card { padding: 40px; }
     .like .icon { width: 88px; height: 88px; }
     .like .icon svg { width: 44px; height: 44px; }
     .like p { font-size: 17px; }
-    .question { font-size: 34px; }
   }
 
   @media (max-width: 360px) {
     .likes { gap: 8px; }
     .like p { font-size: 13px; }
-    .catch { font-size: 17px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -480,10 +272,6 @@
   <span class="bubble peach"    style="width:56px;height:56px;left:18%;top:40px"></span>
   <span class="bubble lavender" style="width:90px;height:90px;right:6%;bottom:30px"></span>
   <div class="wrap">
-    <div class="photo">
-      <img src="images/profile.jpg" alt="ふくたあつこのプロフィール写真">
-      <div class="placeholder">プロフィール写真<br>images/profile.jpg</div>
-    </div>
     <p class="hello">はじめまして！</p>
     <h1>ふくたあつこ</h1>
     <ul class="tags">
@@ -491,7 +279,6 @@
       <li>保育士</li>
       <li>2児の母</li>
     </ul>
-    <p class="catch">一生折れないこどもの自信を育む！</p>
     <span class="scroll-cue" aria-hidden="true"></span>
   </div>
 </header>
@@ -511,11 +298,6 @@
           <li>2児の母</li>
         </ul>
       </div>
-      <div class="photo soft">
-        <img src="images/clinic.jpg" alt="あわ歯科こども歯科クリニックの写真">
-        <div class="placeholder">クリニックの写真<br>images/clinic.jpg</div>
-      </div>
-      <p class="callout">人見知りしないので、<br>気軽に話しかけてくださいね</p>
     </div>
   </section>
 
@@ -550,78 +332,12 @@
     </div>
   </section>
 
-  <!-- わたしのストーリー -->
-  <section>
-    <span class="bubble lavender" style="width:200px;height:200px;left:-90px;bottom:40px"></span>
-    <span class="bubble peach"    style="width:60px;height:60px;right:10%;top:60px"></span>
-    <div class="wrap reveal">
-      <span class="label">STORY</span>
-      <h2>わたしのストーリー</h2>
-      <ol class="timeline">
-        <li class="card">
-          <p class="step-title">以前のわたし</p>
-          <p class="step-head">毎日、余裕がありませんでした</p>
-          <p>育児と仕事の両立に追われて、こどもを毎日ガミガミ叱っていました。スタッフにも何も任せられない日々でした。</p>
-        </li>
-        <li class="card">
-          <p class="step-title">出会い</p>
-          <p class="step-head"><span class="year">2024年</span>選択理論心理学に出会いました</p>
-          <p>「こどもとどうありたいか？」を考え、一呼吸おいて、こどもを信じて接するようになりました。</p>
-        </li>
-        <li class="card">
-          <p class="step-title">いまのわたし</p>
-          <p class="step-head">こどもの可能性を信じられる自分になれました</p>
-          <div class="photo soft">
-            <img src="images/family.jpg" alt="家族の写真">
-            <div class="placeholder">家族の写真<br>images/family.jpg</div>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- 大切にしている問い -->
-  <section>
-    <div class="wrap reveal">
-      <div class="question-box">
-        <span class="label">MY QUESTION</span>
-        <p>叱る前に、いつも自分に問いかけています</p>
-        <p class="question">「この子と<span class="em">10年後</span>、<br>どんな関係でいたい？」</p>
-        <p class="note">よかったら、あなたも試してみてくださいね</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- つながりましょう -->
-  <section class="connect">
-    <span class="bubble mint" style="width:240px;height:240px;right:-110px;bottom:-40px"></span>
-    <div class="wrap reveal">
-      <span class="label">CONTACT</span>
-      <h2>つながりましょう</h2>
-      <a class="insta-btn" href="https://www.instagram.com/atsuko.fukuta/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
-        @atsuko.fukuta
-      </a>
-      <div class="qr">
-        <img src="images/instagram-qr.svg" alt="Instagram @atsuko.fukuta のQRコード">
-      </div>
-      <p class="qr-note">QRコードからもInstagramを見られます</p>
-    </div>
-  </section>
-
 </main>
 
 <footer>&copy; ふくたあつこ</footer>
 
 <script>
   (function () {
-    // 写真が置かれていないときは仮表示に切り替える
-    document.querySelectorAll(".photo img").forEach(function (img) {
-      function markMissing() { img.parentElement.classList.add("is-missing"); }
-      img.addEventListener("error", markMissing);
-      if (img.complete && img.naturalWidth === 0) markMissing();
-    });
-
     // スクロールしたらふわっと表示する
     if (!("IntersectionObserver" in window)) return;
     document.documentElement.classList.add("js");
