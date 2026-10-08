@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ふくたあつこ 自己紹介</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f3fbf8;
+    --mint: #bfe8da;
+    --mint-soft: #dcf3eb;
+    --mint-deep: #5fb39b;
+    --peach: #fde3d6;
+    --lemon: #fbf1c9;
+    --lavender: #e6e1f5;
+    --ink: #2f4f46;
+    --ink-soft: #5d7a71;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "ヒラギノ丸ゴ ProN",
+      "BIZ UDPGothic", "Meiryo", sans-serif;
+    font-weight: 500;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- スライドの土台 ---------- */
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6vmin 8vmin;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.985);
+    transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s linear 0.8s;
+    overflow: hidden;
+  }
+
+  .slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s;
+  }
+
+  .slide > .content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 160vmin;
+  }
+
+  /* ---------- やわらかい丸の飾り ---------- */
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .bubble.mint     { background: var(--mint); }
+  .bubble.mint-s   { background: var(--mint-soft); }
+  .bubble.peach    { background: var(--peach); }
+  .bubble.lemon    { background: var(--lemon); }
+  .bubble.lavender { background: var(--lavender); }
+
+  .slide.is-active .bubble { animation: float 9s ease-in-out infinite; }
+  .slide.is-active .bubble:nth-child(2n) { animation-duration: 11s; animation-delay: -3s; }
+  .slide.is-active .bubble:nth-child(3n) { animation-duration: 13s; animation-delay: -6s; }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50%      { transform: translate(1.2vmin, -1.8vmin); }
+  }
+
+  /* ---------- 文字 ---------- */
+  .label {
+    display: inline-block;
+    font-size: 2.6vmin;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--mint-deep);
+    background: var(--white);
+    padding: 0.6vmin 2.4vmin;
+    border-radius: 999px;
+    margin-bottom: 3vmin;
+  }
+
+  h2 {
+    font-size: 6vmin;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 3vmin;
+  }
+
+  p.lead {
+    font-size: 3.8vmin;
+    line-height: 1.75;
+  }
+
+  .accent { color: var(--mint-deep); }
+
+  /* ---------- 写真 ---------- */
+  .photo {
+    position: relative;
+    overflow: hidden;
+    background: var(--mint-soft);
+    flex-shrink: 0;
+  }
+
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* 写真がまだないときの仮表示 */
+  .photo .placeholder {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1vmin;
+    color: var(--mint-deep);
+    font-size: 2.4vmin;
+    text-align: center;
+    background:
+      radial-gradient(circle at 22% 22%, var(--white) 0 12%, transparent 12.5%),
+      radial-gradient(circle at 82% 80%, var(--lemon) 0 14%, transparent 14.5%),
+      var(--mint-soft);
+  }
+
+  .photo.is-missing img { display: none; }
+  .photo.is-missing .placeholder { display: flex; }
+
+  .photo.round {
+    border-radius: 50%;
+    border: 1.4vmin solid var(--white);
+    box-shadow: 0 2vmin 5vmin rgba(95, 179, 155, 0.25);
+  }
+
+  .photo.soft {
+    border-radius: 4vmin;
+    border: 1.2vmin solid var(--white);
+    box-shadow: 0 2vmin 5vmin rgba(95, 179, 155, 0.2);
+  }
+
+  /* ---------- 1. タイトル ---------- */
+  .title-layout {
+    display: flex;
+    align-items: center;
+    gap: 8vmin;
+  }
+
+  .title-layout .photo { width: 52vmin; height: 52vmin; }
+
+  .catch {
+    font-size: 8.4vmin;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 5vmin;
+  }
+
+  .catch .small { display: block; font-size: 5.6vmin; color: var(--ink-soft); }
+
+  .name {
+    font-size: 5.2vmin;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    display: inline-flex;
+    align-items: center;
+    gap: 2vmin;
+  }
+
+  .name::before {
+    content: "";
+    width: 3vmin;
+    height: 3vmin;
+    border-radius: 50%;
+    background: var(--mint-deep);
+  }
+
+  /* ---------- 2. わたしについて ---------- */
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr 58vmin;
+    gap: 7vmin;
+    align-items: center;
+  }
+
+  .about-layout .photo { width: 58vmin; height: 42vmin; }
+
+  .profile-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2vmin;
+    margin-bottom: 4vmin;
+  }
+
+  .profile-list li {
+    font-size: 3.6vmin;
+    line-height: 1.45;
+    padding-left: 5vmin;
+    position: relative;
+  }
+
+  .profile-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.9vmin;
+    width: 2.8vmin;
+    height: 2.8vmin;
+    border-radius: 50%;
+    background: var(--mint);
+  }
+
+  .profile-list li small {
+    display: block;
+    font-size: 2.6vmin;
+    color: var(--ink-soft);
+  }
+
+  .callout {
+    display: inline-block;
+    background: var(--white);
+    border-radius: 4vmin;
+    padding: 2.4vmin 4.4vmin;
+    font-size: 3.2vmin;
+    line-height: 1.55;
+    font-weight: 700;
+    color: var(--mint-deep);
+    box-shadow: 0 1.2vmin 3vmin rgba(95, 179, 155, 0.18);
+  }
+
+  /* ---------- 3〜5. ストーリー ---------- */
+  .story {
+    max-width: 120vmin;
+    margin: 0 auto;
+  }
+
+  .story h2 { font-size: 6.4vmin; }
+
+  .story-box {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 6vmin;
+    padding: 6vmin 7vmin;
+    box-shadow: 0 2vmin 6vmin rgba(95, 179, 155, 0.15);
+  }
+
+  .year {
+    display: inline-block;
+    font-size: 4vmin;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--mint-deep);
+    border-radius: 999px;
+    padding: 0.4vmin 3vmin;
+    margin-right: 1.5vmin;
+    vertical-align: 0.4vmin;
+  }
+
+  .question-mini {
+    display: block;
+    margin: 3.6vmin 0;
+    font-size: 5.2vmin;
+    font-weight: 700;
+    color: var(--mint-deep);
+  }
+
+  .now-layout {
+    display: grid;
+    grid-template-columns: 1fr 64vmin;
+    gap: 7vmin;
+    align-items: center;
+  }
+
+  .now-layout .photo { width: 64vmin; height: 48vmin; }
+
+  .now-layout .big {
+    font-size: 6.4vmin;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  /* ---------- 6. 問いかけ ---------- */
+  .ask {
+    text-align: center;
+  }
+
+  .ask .before {
+    font-size: 4vmin;
+    color: var(--ink-soft);
+    margin-bottom: 4vmin;
+  }
+
+  .ask .question {
+    font-size: 9.6vmin;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .ask .question .em {
+    background: linear-gradient(transparent 62%, var(--mint) 62%);
+  }
+
+  /* ---------- 7. Instagram ---------- */
+  .connect-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10vmin;
+  }
+
+  .qr {
+    width: 46vmin;
+    height: 46vmin;
+    background: var(--white);
+    border-radius: 5vmin;
+    padding: 3vmin;
+    box-shadow: 0 2vmin 5vmin rgba(95, 179, 155, 0.22);
+  }
+
+  .qr img { width: 100%; height: 100%; display: block; }
+
+  .insta-id {
+    font-size: 7vmin;
+    font-weight: 700;
+    color: var(--mint-deep);
+    letter-spacing: 0.02em;
+    margin-top: 2vmin;
+  }
+
+  .insta-label {
+    font-size: 3.6vmin;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- 操作のヒント（最初だけ表示） ---------- */
+  .hint {
+    position: fixed;
+    bottom: 3vmin;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.8vmin;
+    color: var(--ink-soft);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.8vmin 2.4vmin;
+    border-radius: 999px;
+    z-index: 10;
+    transition: opacity 0.6s ease;
+  }
+
+  .hint.is-hidden { opacity: 0; pointer-events: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide, .slide.is-active { transition: opacity 0.3s ease, visibility 0s; transform: none; }
+    .slide.is-active .bubble { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 1. タイトル -->
+<section class="slide is-active" aria-label="タイトル">
+  <span class="bubble mint"     style="width:70vmin;height:70vmin;right:-18vmin;top:-22vmin"></span>
+  <span class="bubble lemon"    style="width:26vmin;height:26vmin;left:-6vmin;bottom:8vmin"></span>
+  <span class="bubble peach"    style="width:14vmin;height:14vmin;left:40%;top:8vmin"></span>
+  <span class="bubble mint-s"   style="width:34vmin;height:34vmin;left:30%;bottom:-16vmin"></span>
+  <div class="content title-layout">
+    <div>
+      <p class="catch">
+        <span class="small">一生折れない</span>
+        こどもの自信を<br>育む！
+      </p>
+      <p class="name">ふくたあつこ</p>
+    </div>
+    <div class="photo round">
+      <img src="images/profile.jpg" alt="ふくたあつこのプロフィール写真">
+      <div class="placeholder">プロフィール写真<br><small>images/profile.jpg</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. わたしについて -->
+<section class="slide" aria-label="わたしについて">
+  <span class="bubble mint-s"   style="width:56vmin;height:56vmin;left:-20vmin;top:-20vmin"></span>
+  <span class="bubble lavender" style="width:20vmin;height:20vmin;right:6vmin;bottom:-6vmin"></span>
+  <span class="bubble lemon"    style="width:12vmin;height:12vmin;right:44%;top:6vmin"></span>
+  <div class="content about-layout">
+    <div>
+      <span class="label">わたしについて</span>
+      <ul class="profile-list">
+        <li>歯科医師・保育士</li>
+        <li>あわ歯科こども歯科クリニック 副院長<small>夫とともに医院を経営しています</small></li>
+        <li>ベーシックプロスピーカー<small>一般財団法人日本プロスピーカー協会 認定</small></li>
+        <li>2児の母</li>
+      </ul>
+      <p class="callout">人見知りしないので、<br>今日は気軽に話しかけてくださいね</p>
+    </div>
+    <div class="photo soft">
+      <img src="images/clinic.jpg" alt="あわ歯科こども歯科クリニックの写真">
+      <div class="placeholder">クリニックの写真<br><small>images/clinic.jpg</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 以前のわたし -->
+<section class="slide" aria-label="以前のわたし">
+  <span class="bubble lavender" style="width:48vmin;height:48vmin;right:-14vmin;top:-12vmin"></span>
+  <span class="bubble mint-s"   style="width:30vmin;height:30vmin;left:-8vmin;bottom:-8vmin"></span>
+  <span class="bubble peach"    style="width:10vmin;height:10vmin;left:14%;top:12vmin"></span>
+  <div class="content story">
+    <span class="label">以前のわたし</span>
+    <div class="story-box">
+      <h2>毎日、余裕がありませんでした</h2>
+      <p class="lead">
+        育児と仕事の両立に追われて、<br>
+        こどもを毎日ガミガミ叱っていました。<br>
+        スタッフにも何も任せられない日々でした。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 出会い -->
+<section class="slide" aria-label="出会い">
+  <span class="bubble mint"     style="width:44vmin;height:44vmin;left:-14vmin;top:-14vmin"></span>
+  <span class="bubble lemon"    style="width:28vmin;height:28vmin;right:-6vmin;bottom:-6vmin"></span>
+  <span class="bubble lavender" style="width:12vmin;height:12vmin;right:18%;top:10vmin"></span>
+  <div class="content story">
+    <span class="label">出会い</span>
+    <div class="story-box">
+      <h2><span class="year">2024年</span>選択理論心理学に<br>出会いました</h2>
+      <p class="lead">
+        <span class="question-mini">「こどもとどうありたいか？」</span>
+        この問いを考え、一呼吸おいて、<br>
+        こどもを信じて接するようになりました。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. いまのわたし -->
+<section class="slide" aria-label="いまのわたし">
+  <span class="bubble peach"    style="width:40vmin;height:40vmin;left:-12vmin;bottom:-14vmin"></span>
+  <span class="bubble mint-s"   style="width:60vmin;height:60vmin;right:-20vmin;top:-24vmin"></span>
+  <span class="bubble lemon"    style="width:12vmin;height:12vmin;left:40%;top:6vmin"></span>
+  <div class="content now-layout">
+    <div>
+      <span class="label">いまのわたし</span>
+      <p class="big">こどもの<span class="accent">可能性</span>を<br>信じられる自分に<br>なれました</p>
+    </div>
+    <div class="photo soft">
+      <img src="images/family.jpg" alt="家族の写真">
+      <div class="placeholder">家族の写真<br><small>images/family.jpg</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 今日から試してほしいこと -->
+<section class="slide" aria-label="今日から試してほしいこと">
+  <span class="bubble mint-s"   style="width:80vmin;height:80vmin;left:50%;top:50%;margin:-40vmin 0 0 -40vmin"></span>
+  <span class="bubble lemon"    style="width:16vmin;height:16vmin;left:8vmin;top:10vmin"></span>
+  <span class="bubble peach"    style="width:12vmin;height:12vmin;right:10vmin;bottom:12vmin"></span>
+  <span class="bubble lavender" style="width:8vmin;height:8vmin;right:20vmin;top:14vmin"></span>
+  <div class="content ask">
+    <span class="label">今日から試してほしいこと</span>
+    <p class="before">叱る前に、自分に問いかけてみてください</p>
+    <p class="question">「この子と<span class="em">10年後</span>、<br>どんな関係でいたい？」</p>
+  </div>
+</section>
+
+<!-- 7. つながりましょう -->
+<section class="slide" aria-label="つながりましょう">
+  <span class="bubble mint"     style="width:50vmin;height:50vmin;left:-16vmin;bottom:-18vmin"></span>
+  <span class="bubble lavender" style="width:22vmin;height:22vmin;right:6vmin;top:-6vmin"></span>
+  <span class="bubble lemon"    style="width:12vmin;height:12vmin;right:30%;bottom:8vmin"></span>
+  <div class="content connect-layout">
+    <div>
+      <span class="label">つながりましょう</span>
+      <p class="insta-label">Instagram</p>
+      <p class="insta-id">@atsuko.fukuta</p>
+    </div>
+    <div class="qr">
+      <img src="images/instagram-qr.svg" alt="Instagram @atsuko.fukuta のQRコード">
+    </div>
+  </div>
+</section>
+
+<div class="hint" id="hint">→ / スペース / クリックで次へ　← で戻る　F で全画面</div>
+
+<script>
+  (function () {
+    var slides = document.querySelectorAll(".slide");
+    var hint = document.getElementById("hint");
+    var current = 0;
+
+    // 写真が置かれていないときは仮表示に切り替える
+    document.querySelectorAll(".photo img").forEach(function (img) {
+      function markMissing() { img.parentElement.classList.add("is-missing"); }
+      img.addEventListener("error", markMissing);
+      if (img.complete && img.naturalWidth === 0) markMissing();
+    });
+
+    function show(index) {
+      if (index < 0 || index >= slides.length || index === current) return;
+      slides[current].classList.remove("is-active");
+      current = index;
+      slides[current].classList.add("is-active");
+      hint.classList.add("is-hidden");
+      history.replaceState(null, "", "#" + (current + 1));
+    }
+
+    function next() { show(current + 1); }
+    function prev() { show(current - 1); }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen && document.exitFullscreen();
+      }
+    }
+
+    document.addEventListener("keydown", function (e) {
+      switch (e.key) {
+        case "ArrowRight": case "ArrowDown": case "PageDown": case " ": case "Enter":
+          e.preventDefault(); next(); break;
+        case "ArrowLeft": case "ArrowUp": case "PageUp": case "Backspace":
+          e.preventDefault(); prev(); break;
+        case "Home": show(0); break;
+        case "End": show(slides.length - 1); break;
+        case "f": case "F": toggleFullscreen(); break;
+      }
+    });
+
+    // 画面の右側クリックで次へ、左側クリックで戻る
+    document.addEventListener("click", function (e) {
+      if (e.clientX < window.innerWidth / 3) prev(); else next();
+    });
+
+    // タッチ操作（スワイプ）
+    var touchX = null;
+    document.addEventListener("touchstart", function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+    document.addEventListener("touchend", function (e) {
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+      touchX = null;
+    });
+
+    // URLの #番号 から再開できるようにする
+    function showFromHash() {
+      var n = parseInt(location.hash.slice(1), 10);
+      if (n >= 1 && n <= slides.length) show(n - 1);
+    }
+    window.addEventListener("hashchange", showFromHash);
+    showFromHash();
+  })();
+</script>
+</body>
+</html>
